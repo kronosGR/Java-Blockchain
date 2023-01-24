@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BlockchainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-24T11:11:06" hostname="DESKTOP-KVPJL09" time="0.144">
+  <properties/>
+  <testcase name="start" classname="BlockchainTest" time="0.144"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+Block:
+Id: 1
+Timestamp: 1674558666714
+Hash of the previous block:
+0
+Hash of the block:
+0935952219d3306bb20c494ec56145061dfc1f992fae144052787c4aef70dd1f
+
+
+Block:
+Id: 2
+Timestamp: 1674558666715
+Hash of the previous block:
+0935952219d3306bb20c494ec56145061dfc1f992fae144052787c4aef70dd1f
+Hash of the block:
+268376a755f77188848a0011bda30d9e1b83827014057a134e950ed0ad624d26
+
+
+Block:
+Id: 3
+Timestamp: 1674558666715
+Hash of the previous block:
+268376a755f77188848a0011bda30d9e1b83827014057a134e950ed0ad624d26
+Hash of the block:
+392652a0b9300adbf9d902c3687dbe9ff617539796bd5b562687eb31243a4566
+
+
+Block:
+Id: 4
+Timestamp: 1674558666715
+Hash of the previous block:
+392652a0b9300adbf9d902c3687dbe9ff617539796bd5b562687eb31243a4566
+Hash of the block:
+c22495d0c1e417a25dbbb430f2163b5d56e23680d35f1ebed4f17f9f0e120c40
+
+
+Block:
+Id: 5
+Timestamp: 1674558666716
+Hash of the previous block:
+c22495d0c1e417a25dbbb430f2163b5d56e23680d35f1ebed4f17f9f0e120c40
+Hash of the block:
+288533b9907bb20601be1bb9f2c688c716ae1f1f57d2f90f0ebbac70223a1d60
+
+
+
+?[1;31m
+Start test 2?[0m
+Block:
+Id: 1
+Timestamp: 1674558666768
+Hash of the previous block:
+0
+Hash of the block:
+b6d38b927e34300207990247d5cf80a53657e2ba69251e41503849e9d1756dfb
+
+
+Block:
+Id: 2
+Timestamp: 1674558666768
+Hash of the previous block:
+b6d38b927e34300207990247d5cf80a53657e2ba69251e41503849e9d1756dfb
+Hash of the block:
+3a86b96f86d6a41c02178c5a85f055980498b5d054e1c5a355b697c4ed6c5151
+
+
+Block:
+Id: 3
+Timestamp: 1674558666768
+Hash of the previous block:
+3a86b96f86d6a41c02178c5a85f055980498b5d054e1c5a355b697c4ed6c5151
+Hash of the block:
+4d71b2699c5e4e5ea2c6f9b2816d3f94c757fcb7955ef3290e77a3f802140baa
+
+
+Block:
+Id: 4
+Timestamp: 1674558666768
+Hash of the previous block:
+4d71b2699c5e4e5ea2c6f9b2816d3f94c757fcb7955ef3290e77a3f802140baa
+Hash of the block:
+42f09bd3da903d0d701eecae434a39ccd54b1cca31ad881fb9a41da8f6199aa2
+
+
+Block:
+Id: 5
+Timestamp: 1674558666768
+Hash of the previous block:
+42f09bd3da903d0d701eecae434a39ccd54b1cca31ad881fb9a41da8f6199aa2
+Hash of the block:
+52402746920160890933a528883ff25545b4bc9d5cadf37bca6c23747435c18d
+
+
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
