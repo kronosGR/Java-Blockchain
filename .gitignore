@@ -1,0 +1,5 @@
+# Project exclude paths
+/.gradle/
+/Topics/Instant/Theory/build/
+/Topics/Instant/Theory/out/
+/Topics/Instant/Theory/out/production/classes/
