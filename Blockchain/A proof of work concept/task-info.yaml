@@ -239,6 +239,154 @@ files:
         }
     }
   learner_created: false
+- name: src/blockchain/StringUtil.java
+  visible: true
+  text: |
+    package blockchain;
+
+    import java.security.MessageDigest;
+
+    public class StringUtil {
+        public static String applySha256(String input) {
+            try {
+                MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                /* Applies sha256 to our input */
+                byte[] hash = digest.digest(input.getBytes("UTF-8"));
+                StringBuilder hexString = new StringBuilder();
+                for (byte elem : hash) {
+                    String hex = Integer.toHexString(0xff & elem);
+                    if (hex.length() == 1) hexString.append('0');
+                    hexString.append(hex);
+                }
+                return hexString.toString();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+  learner_created: true
+- name: src/blockchain/Blockchain.java
+  visible: true
+  text: |
+    package blockchain;
+
+    import blockchain.Models.Block;
+
+    import java.util.ArrayList;
+    import java.util.Date;
+    import java.util.List;
+
+    public class Blockchain {
+        int blockID = 1;
+        List<Block> blocks = new ArrayList<>();
+
+        private Block getLastBlock() {
+            if (blocks.size() > 0)
+                return blocks.get(blocks.size() - 1);
+            else
+                return null;
+        }
+
+        private int getNewId() {
+            return blockID++;
+        }
+
+        private String createHash() {
+            return StringUtil.applySha256(String.valueOf(new Date().getTime() + blockID));
+        }
+
+
+        public void createNewBlock() {
+            Block lastBlock = getLastBlock();
+            Block nextBlock;
+
+            if (lastBlock == null)
+                nextBlock = new Block(getNewId(), new Date().getTime(), createHash());
+            else
+                nextBlock = new Block(getNewId(), new Date().getTime(), createHash(), lastBlock.getHash());
+
+            blocks.add(nextBlock);
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            for (Block block : blocks) {
+                sb.append(block.toString());
+                sb.append("\n\n");
+            }
+            return sb.toString();
+        }
+    }
+  learner_created: true
+- name: src/blockchain/Models/Block.java
+  visible: true
+  text: |
+    package blockchain.Models;
+
+    public class Block {
+        int id;
+        long timestamp;
+        String hash;
+        String prevHash;
+
+        public Block(int id, long timestamp, String hash, String prevHash) {
+            this.id = id;
+            this.timestamp = timestamp;
+            this.hash = hash;
+            this.prevHash = prevHash;
+        }
+
+        public Block(int id, long timestamp, String hash) {
+            this(id, timestamp, hash, "0");
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public long getTimestamp() {
+            return timestamp;
+        }
+
+        public void setTimestamp(long timestamp) {
+            this.timestamp = timestamp;
+        }
+
+        public String getHash() {
+            return hash;
+        }
+
+        public void setHash(String hash) {
+            this.hash = hash;
+        }
+
+        public String getPrevHash() {
+            return prevHash;
+        }
+
+        public void setPrevHash(String prevHash) {
+            this.prevHash = prevHash;
+        }
+
+        @Override
+        public String toString() {
+            return "Block:" +
+                    "\nId: " + id +
+                    "\nTimestamp: " + timestamp +
+                    "\nHash of the previous block:" +
+                    "\n" + prevHash +
+                    "\nHash of the block:\n" + hash + '\n';
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/50/stages/272/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Fri, 27 Jan 2023 09:29:39 UTC
 record: -1
