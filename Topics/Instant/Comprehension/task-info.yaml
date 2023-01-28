@@ -1,11 +1,11 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: ChronoField.INSTANT_SECONDS
-- text: ChronoField.MILLI_OF_SECOND
-- text: ChronoField.NANO_OF_SECOND
 - text: ChronoField.MICRO_OF_SECOND
+- text: ChronoField.INSTANT_SECONDS
+- text: ChronoField.NANO_OF_SECOND
 - text: ChronoField.SECOND_OF_MINUTE
+- text: ChronoField.MILLI_OF_SECOND
 files:
 - name: src/Task.java
   visible: true

@@ -1,5 +1,7 @@
 package blockchain.Models;
 
+import java.util.Objects;
+
 public class Block {
     int id;
     long timestamp;
@@ -76,4 +78,6 @@ public class Block {
                 "\nHash of the block:\n" + hash +
                 "\nBlock was generating for " + runtime + " seconds\n";
     }
+
+
 }

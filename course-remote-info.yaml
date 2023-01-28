@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/209941/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Fri, 27 Jan 2023 08:46:48 UTC
+update_date: "Sat, 28 Jan 2023 10:18:15 UTC"
 stages:
 - id: 271
   step: 5413
@@ -25,9 +25,9 @@ stages:
   is_completed: false
 topics:
   0:
-  - title: Write, compile, and run
+  - title: "Write, compile, and run"
     theory_id: 3739
-  - title: JVM, JRE, and JDK
+  - title: "JVM, JRE, and JDK"
     theory_id: 3499
   - title: Units of information
     theory_id: 6865
@@ -41,7 +41,7 @@ topics:
     theory_id: 7929
   - title: The big O notation
     theory_id: 16699
-  - title: Best, average and worst cases
+  - title: "Best, average and worst cases"
     theory_id: 20084
   - title: Data structures
     theory_id: 16927
@@ -175,7 +175,7 @@ topics:
     theory_id: 3581
   - title: Instant
     theory_id: 21233
-  - title: 'Hashing: overview'
+  - title: "Hashing: overview"
     theory_id: 9831
   - title: Hash function
     theory_id: 10878
@@ -291,7 +291,7 @@ topics:
   - title: Nested classes
     theory_id: 11845
   2:
-  - title: Synchronous, asynchronous, parallel
+  - title: "Synchronous, asynchronous, parallel"
     theory_id: 9332
   - title: Processes and threads
     theory_id: 9420
