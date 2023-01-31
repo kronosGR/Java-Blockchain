@@ -2,16 +2,13 @@ package blockchain;
 
 import blockchain.Models.Block;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Blockchain {
     List<Block> blocks;
 
     public Blockchain() {
-        blocks = new ArrayList<>();
+        blocks = Collections.synchronizedList(new ArrayList<>());
     }
 
     public int getSize(){

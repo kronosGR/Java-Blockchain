@@ -7,10 +7,10 @@ public class Block {
     long timestamp;
     String hash;
     String prevHash;
-    long magicNumber;
+    String magicNumber;
     long runtime;
 
-    public Block(int id, long timestamp, String hash, String prevHash, long magicNumber, long runtime) {
+    public Block(int id, long timestamp, String hash, String prevHash, String magicNumber, long runtime) {
         this.id = id;
         this.timestamp = timestamp;
         this.hash = hash;
@@ -51,11 +51,11 @@ public class Block {
         this.prevHash = prevHash;
     }
 
-    public long getMagicNumber() {
+    public String getMagicNumber() {
         return magicNumber;
     }
 
-    public void setMagicNumber(long magicNumber) {
+    public void setMagicNumber(String magicNumber) {
         this.magicNumber = magicNumber;
     }
 
@@ -69,14 +69,12 @@ public class Block {
 
     @Override
     public String toString() {
-        return "Block:" +
-                "\nId: " + id +
+        return  "Id: " + id +
                 "\nTimestamp: " + timestamp +
                 "\nMagic number: " + magicNumber +
                 "\nHash of the previous block:" +
                 "\n" + prevHash +
-                "\nHash of the block:\n" + hash +
-                "\nBlock was generating for " + runtime + " seconds\n";
+                "\nHash of the block:\n" + hash ;
     }
 
 

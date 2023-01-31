@@ -453,17 +453,8 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5415#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Error in test #1
-
-    Program ran out of input. You tried to read more than expected.
-
-    Please find below the output of your program during this failed test.
-
-    ---
-
-    Enter how many zeros the hash must start with:
-  time: "Sat, 28 Jan 2023 10:18:30 UTC"
+  message: Congratulations!
+  time: "Tue, 31 Jan 2023 12:06:57 UTC"
 record: -1

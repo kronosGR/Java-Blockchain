@@ -1,0 +1,18 @@
+type: code
+files:
+- name: src/Main.java
+  visible: true
+  text: |-
+    class AnnotationUtils {
+
+        public static void printClassAnnotations(Class classObject) {
+            // write your code here
+        }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/12619#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Tue, 31 Jan 2023 05:05:02 UTC"
+record: -1

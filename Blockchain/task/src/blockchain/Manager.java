@@ -7,72 +7,61 @@ import java.util.Random;
 
 public class Manager {
     Random random;
-    Blockchain blockchain;
-    Block previousBlock;
-    volatile int zeros;
-    int blockID = 0;
+    static volatile int zeros;
+    volatile int lastTime;
 
-    public Manager(int z) {
+    public Manager(int z, int lastTime) {
         this.zeros = z;
+        this.lastTime = lastTime;
         random = new Random();
-        blockchain = new Blockchain();
     }
 
-    public Block createBlock() {
+    public Block createBlock(String magic, String hash, long duration, Block previousBlock) {
         long timeStamp = getTimeStamp();
-        int id = getNewId();
-        String prevHash = getPreviousHash();
+        int id = getNewId(previousBlock);
+        String prevHash = getPreviousHash(previousBlock);
         Block nextBlock;
 
-        long magic;
-        long startTime = getTimeStamp();
-        String hash;
-
-        do {
-            magic = random.nextLong();
-            hash = createHash(String.valueOf(magic));
-        } while (!isRight(hash));
-
-        long endTime = getTimeStamp();
-        long duration = endTime - startTime;
-
         nextBlock = new Block(id, timeStamp, hash, prevHash, magic, duration);
-        blockchain.addBlock(nextBlock);
-        previousBlock = nextBlock;
         return nextBlock;
     }
 
-    private int getNewId() {
-        return blockID++;
-    }
 
-    private Block getLastBlock() {
-        if (blockchain.getSize() > 0)
-            return blockchain.getBlock(blockchain.getSize() - 1);
-        else
-            return null;
+    private int getNewId(Block previousBlock) {
+        return previousBlock == null ? 1 : previousBlock.getId() + 1;
     }
 
 
-    private boolean isRight(String hash) {
+
+    public static boolean isRight(String hash) {
         return hash.startsWith("0".repeat(zeros));
     }
 
-    private String createHash(String txt) {
+    public static String createHash(String txt) {
         return StringUtil.applySha256(txt);
     }
 
-    private String getPreviousHash() {
+    private String getPreviousHash(Block previousBlock) {
         if (previousBlock != null) return previousBlock.getHash();
         else return "0";
     }
 
-    private long getTimeStamp() {
+    public static long getTimeStamp() {
         return new Date().getTime();
     }
 
-    public void updateZeros(){
-
+    public void updateZeros(int duration, int size) {
+        this.lastTime = (lastTime + duration) / size;
+        if (lastTime > duration) {
+            zeros++;
+            System.out.println("N was increased to " + zeros);
+        } else if (lastTime == duration) {
+            System.out.println("N stays the same");
+        } else {
+            this.zeros = zeros == 0 ? 0 : zeros - 1;
+            System.out.println("N was decreased to " + zeros);
+        }
+        System.out.println();
     }
 
 }

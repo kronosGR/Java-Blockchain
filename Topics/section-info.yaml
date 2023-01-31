@@ -5,3 +5,7 @@ content:
 - Type Bounds
 - Stack
 - Memento
+- Switch expression
+- Detecting annotations
+- Custom annotations and types of annotations
+- Wildcards
