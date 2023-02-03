@@ -16,13 +16,13 @@ public class Manager {
         random = new Random();
     }
 
-    public Block createBlock(String magic, String hash, long duration, Block previousBlock) {
+    public Block createBlock(String magic, String hash, long duration, Block previousBlock, String msg) {
         long timeStamp = getTimeStamp();
         int id = getNewId(previousBlock);
         String prevHash = getPreviousHash(previousBlock);
         Block nextBlock;
 
-        nextBlock = new Block(id, timeStamp, hash, prevHash, magic, duration);
+        nextBlock = new Block(id, timeStamp, hash, prevHash, magic, duration,msg);
         return nextBlock;
     }
 
@@ -51,7 +51,7 @@ public class Manager {
     }
 
     public void updateZeros(int duration, int size) {
-        this.lastTime = (lastTime + duration) / size;
+        this.lastTime = lastTime + ((duration-lastTime) / size);
         if (lastTime > duration) {
             zeros++;
             System.out.println("N was increased to " + zeros);

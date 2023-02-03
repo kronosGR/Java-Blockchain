@@ -287,6 +287,307 @@ files:
         }
     }
   learner_created: false
+- name: src/blockchain/StringUtil.java
+  visible: true
+  text: |
+    package blockchain;
+
+    import java.security.MessageDigest;
+
+    public class StringUtil {
+        public static String applySha256(String input) {
+            try {
+                MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                byte[] hash = digest.digest(input.getBytes("UTF-8"));
+                StringBuilder hexString = new StringBuilder();
+                for (byte elem : hash) {
+                    String hex = Integer.toHexString(0xff & elem);
+                    if (hex.length() == 1) hexString.append('0');
+                    hexString.append(hex);
+                }
+                return hexString.toString();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+  learner_created: true
+- name: src/blockchain/Blockchain.java
+  visible: true
+  text: |
+    package blockchain;
+
+    import blockchain.Models.Block;
+
+    import java.util.*;
+
+    public class Blockchain {
+        List<Block> blocks;
+
+        public Blockchain() {
+            blocks = Collections.synchronizedList(new ArrayList<>());
+        }
+
+        public int getSize(){
+            return  blocks.size();
+        }
+
+        public void addBlock(Block block){
+            blocks.add(block);
+        }
+
+        public Block getBlock(int id){
+            return blocks.get(id);
+        }
+
+
+    //
+    //    @Override
+    //    public String toString() {
+    //        StringBuilder sb = new StringBuilder();
+    //        for (Block block : blocks) {
+    //            sb.append(block.toString());
+    //            sb.append("\n\n");
+    //        }
+    //        return sb.toString();
+    //    }
+    }
+  learner_created: true
+- name: src/blockchain/Models/Block.java
+  visible: true
+  text: |
+    package blockchain.Models;
+
+    import java.util.Objects;
+
+    public class Block {
+        int id;
+        long timestamp;
+        String hash;
+        String prevHash;
+        String magicNumber;
+        long runtime;
+
+        public Block(int id, long timestamp, String hash, String prevHash, String magicNumber, long runtime) {
+            this.id = id;
+            this.timestamp = timestamp;
+            this.hash = hash;
+            this.prevHash = prevHash;
+            this.magicNumber = magicNumber;
+            this.runtime = runtime;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public long getTimestamp() {
+            return timestamp;
+        }
+
+        public void setTimestamp(long timestamp) {
+            this.timestamp = timestamp;
+        }
+
+        public String getHash() {
+            return hash;
+        }
+
+        public void setHash(String hash) {
+            this.hash = hash;
+        }
+
+        public String getPrevHash() {
+            return prevHash;
+        }
+
+        public void setPrevHash(String prevHash) {
+            this.prevHash = prevHash;
+        }
+
+        public String getMagicNumber() {
+            return magicNumber;
+        }
+
+        public void setMagicNumber(String magicNumber) {
+            this.magicNumber = magicNumber;
+        }
+
+        public long getRuntime() {
+            return runtime;
+        }
+
+        public void setRuntime(long runtime) {
+            this.runtime = runtime;
+        }
+
+        @Override
+        public String toString() {
+            return  "Id: " + id +
+                    "\nTimestamp: " + timestamp +
+                    "\nMagic number: " + magicNumber +
+                    "\nHash of the previous block:" +
+                    "\n" + prevHash +
+                    "\nHash of the block:\n" + hash ;
+        }
+
+
+    }
+  learner_created: true
+- name: src/blockchain/Manager.java
+  visible: true
+  text: |
+    package blockchain;
+
+    import blockchain.Models.Block;
+
+    import java.util.Date;
+    import java.util.Random;
+
+    public class Manager {
+        Random random;
+        static volatile int zeros;
+        volatile int lastTime;
+
+        public Manager(int z, int lastTime) {
+            this.zeros = z;
+            this.lastTime = lastTime;
+            random = new Random();
+        }
+
+        public Block createBlock(String magic, String hash, long duration, Block previousBlock) {
+            long timeStamp = getTimeStamp();
+            int id = getNewId(previousBlock);
+            String prevHash = getPreviousHash(previousBlock);
+            Block nextBlock;
+
+            nextBlock = new Block(id, timeStamp, hash, prevHash, magic, duration);
+            return nextBlock;
+        }
+
+
+        private int getNewId(Block previousBlock) {
+            return previousBlock == null ? 1 : previousBlock.getId() + 1;
+        }
+
+
+
+        public static boolean isRight(String hash) {
+            return hash.startsWith("0".repeat(zeros));
+        }
+
+        public static String createHash(String txt) {
+            return StringUtil.applySha256(txt);
+        }
+
+        private String getPreviousHash(Block previousBlock) {
+            if (previousBlock != null) return previousBlock.getHash();
+            else return "0";
+        }
+
+        public static long getTimeStamp() {
+            return new Date().getTime();
+        }
+
+        public void updateZeros(int duration, int size) {
+            this.lastTime = (lastTime + duration) / size;
+            if (lastTime > duration) {
+                zeros++;
+                System.out.println("N was increased to " + zeros);
+            } else if (lastTime == duration) {
+                System.out.println("N stays the same");
+            } else {
+                this.zeros = zeros == 0 ? 0 : zeros - 1;
+                System.out.println("N was decreased to " + zeros);
+            }
+            System.out.println();
+        }
+
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5416#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Error in test #1
+
+    In this test, the program is running for a long time, more than 15 seconds. Most likely, the program has gone into an infinite loop.
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    Block:
+    Created by miner # 32
+    Id: 1
+    Timestamp: 1675451697979
+    Magic number: -1965123510
+    Hash of the previous block:
+    0
+    Hash of the block:
+    a88d40d5af09e5fa2ceb55dbb425dd5375e357884d6caa93d2f1f85a0527c56e
+    Block data: Sarah: You always will be first because it is your blockchain!
+    Block was generating for 0 seconds
+    N stays the same
+
+    Block:
+    Created by miner # 31
+    Id: 2
+    Timestamp: 1675451698001
+    Magic number: 15204442
+    Hash of the previous block:
+    a88d40d5af09e5fa2ceb55dbb425dd5375e357884d6caa93d2f1f85a0527c56e
+    Hash of the block:
+    99006224198d630540fefa596c2f052aad4eda70bd529c7ee716b6c167d9a37f
+    Block data: Sarah: Anyway, thank you for this amazing chat.
+    Sarah: It&#39;s not fair!
+    Tom: Hey, I&#39;m first!
+    Tom: You&#39;re welcome :)
+    Block was generating for 0 seconds
+    N stays the same
+
+    Block:
+    Created by miner # 33
+    Id: 3
+    Timestamp: 1675451698001
+    Magic number: -903789463
+    Hash of the previous block:
+    99006224198d630540fefa596c2f052aad4eda70bd529c7ee716b6c167d9a37f
+    Hash of the block:
+    01b1dddabae23fecf6cd29223ab36038eff9807c994cfc18638d0a57ec90a6e9
+    Block data: Tom: Hey, I&#39;m first!
+    Block was generating for 0 seconds
+    N stays the same
+
+    Block:
+    Created by miner # 31
+    Id: 4
+    Timestamp: 1675451698007
+    Magic number: 1070107455
+    Hash of the previous block:
+    01b1dddabae23fecf6cd29223ab36038eff9807c994cfc18638d0a57ec90a6e9
+    Hash of the block:
+    e469667505ce1ac0a54a7474efe8ffb5c11223b74173a3fd754090557a8ccd37
+    Block data: Sarah: It&#39;s not fair!
+    Sarah: You always will be first because it is your blockchain!
+    Block was generating for 0 seconds
+    N stays the same
+
+    Block:
+    Created by miner # 32
+    Id: 5
+    Timestamp: 1675451698012
+    Magic number: -1954842996
+    Hash of the previous block:
+    e469667505ce1ac0a54a7474efe8ffb5c11223b74173a3fd754090557a8ccd37
+    Hash of the block:
+    68fe9bf0e272e412cd88364b2c3e6d4a58255b41632ab4cd4ed003c8b71cc493
+    Block data: Tom: You&#39;re welcome :)
+    Block was generating for 0 seconds
+    N stays the same
+  time: "Fri, 03 Feb 2023 19:15:13 UTC"
 record: -1

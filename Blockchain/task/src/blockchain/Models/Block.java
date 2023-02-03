@@ -1,6 +1,7 @@
 package blockchain.Models;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Block {
     int id;
@@ -9,14 +10,16 @@ public class Block {
     String prevHash;
     String magicNumber;
     long runtime;
+    String msg;
 
-    public Block(int id, long timestamp, String hash, String prevHash, String magicNumber, long runtime) {
+    public Block(int id, long timestamp, String hash, String prevHash, String magicNumber, long runtime, String msg) {
         this.id = id;
         this.timestamp = timestamp;
         this.hash = hash;
         this.prevHash = prevHash;
         this.magicNumber = magicNumber;
         this.runtime = runtime;
+        this.msg = msg;
     }
 
     public int getId() {
@@ -67,14 +70,23 @@ public class Block {
         this.runtime = runtime;
     }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
     @Override
     public String toString() {
-        return  "Id: " + id +
+        return "Id: " + id +
                 "\nTimestamp: " + timestamp +
                 "\nMagic number: " + magicNumber +
                 "\nHash of the previous block:" +
                 "\n" + prevHash +
-                "\nHash of the block:\n" + hash ;
+                "\nHash of the block:\n" + hash+
+                "\nBlock data: " + this.msg;
     }
 
 

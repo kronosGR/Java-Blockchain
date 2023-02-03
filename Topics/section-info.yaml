@@ -9,3 +9,13 @@ content:
 - Detecting annotations
 - Custom annotations and types of annotations
 - Wildcards
+- Function composition
+- Stream filtering
+- Map and flatMap
+- Infinite streams
+- Taking elements
+- Streams of primitives
+- Stream pipelines
+- Parallel streams
+- Grouping collectors
+- Facade
