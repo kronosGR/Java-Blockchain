@@ -13,7 +13,7 @@ import static blockchain.Manager.*;
 
 public class Main {
 
-    static final int MINERS = 4;
+    static final int MINERS = 11;
     static final int BLOCKS = 5;
     private static volatile Block previousBlock;
 

@@ -510,84 +510,8 @@ files:
     }
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5416#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Error in test #1
-
-    In this test, the program is running for a long time, more than 15 seconds. Most likely, the program has gone into an infinite loop.
-
-    Please find below the output of your program during this failed test.
-
-    ---
-
-    Block:
-    Created by miner # 32
-    Id: 1
-    Timestamp: 1675451697979
-    Magic number: -1965123510
-    Hash of the previous block:
-    0
-    Hash of the block:
-    a88d40d5af09e5fa2ceb55dbb425dd5375e357884d6caa93d2f1f85a0527c56e
-    Block data: Sarah: You always will be first because it is your blockchain!
-    Block was generating for 0 seconds
-    N stays the same
-
-    Block:
-    Created by miner # 31
-    Id: 2
-    Timestamp: 1675451698001
-    Magic number: 15204442
-    Hash of the previous block:
-    a88d40d5af09e5fa2ceb55dbb425dd5375e357884d6caa93d2f1f85a0527c56e
-    Hash of the block:
-    99006224198d630540fefa596c2f052aad4eda70bd529c7ee716b6c167d9a37f
-    Block data: Sarah: Anyway, thank you for this amazing chat.
-    Sarah: It&#39;s not fair!
-    Tom: Hey, I&#39;m first!
-    Tom: You&#39;re welcome :)
-    Block was generating for 0 seconds
-    N stays the same
-
-    Block:
-    Created by miner # 33
-    Id: 3
-    Timestamp: 1675451698001
-    Magic number: -903789463
-    Hash of the previous block:
-    99006224198d630540fefa596c2f052aad4eda70bd529c7ee716b6c167d9a37f
-    Hash of the block:
-    01b1dddabae23fecf6cd29223ab36038eff9807c994cfc18638d0a57ec90a6e9
-    Block data: Tom: Hey, I&#39;m first!
-    Block was generating for 0 seconds
-    N stays the same
-
-    Block:
-    Created by miner # 31
-    Id: 4
-    Timestamp: 1675451698007
-    Magic number: 1070107455
-    Hash of the previous block:
-    01b1dddabae23fecf6cd29223ab36038eff9807c994cfc18638d0a57ec90a6e9
-    Hash of the block:
-    e469667505ce1ac0a54a7474efe8ffb5c11223b74173a3fd754090557a8ccd37
-    Block data: Sarah: It&#39;s not fair!
-    Sarah: You always will be first because it is your blockchain!
-    Block was generating for 0 seconds
-    N stays the same
-
-    Block:
-    Created by miner # 32
-    Id: 5
-    Timestamp: 1675451698012
-    Magic number: -1954842996
-    Hash of the previous block:
-    e469667505ce1ac0a54a7474efe8ffb5c11223b74173a3fd754090557a8ccd37
-    Hash of the block:
-    68fe9bf0e272e412cd88364b2c3e6d4a58255b41632ab4cd4ed003c8b71cc493
-    Block data: Tom: You&#39;re welcome :)
-    Block was generating for 0 seconds
-    N stays the same
-  time: "Fri, 03 Feb 2023 19:15:13 UTC"
+  message: Congratulations!
+  time: "Sat, 04 Feb 2023 10:21:12 UTC"
 record: -1
